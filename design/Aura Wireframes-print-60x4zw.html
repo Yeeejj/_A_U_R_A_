@@ -1,0 +1,364 @@
+<!doctype html>
+<html lang="en">
+<head>
+<style data-omelette-print-defaults>
+@media print {
+  @page { margin: 0; }
+  body { padding: 0.5in; box-sizing: border-box; }
+  h1, h2, h3, h4, h5, h6 { break-after: avoid; }
+  figure, table, pre, blockquote, img, svg, tr, [class~="card" i] { break-inside: avoid; }
+  img, svg { max-width: 100%; }
+  p { orphans: 3; widows: 3; }
+}
+</style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Aura — Wireframes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  html, body { margin: 0; padding: 0; background: oklch(0.985 0.012 60); }
+  * { -webkit-font-smoothing: antialiased; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<script type="text/babel" src="design-canvas.jsx"></script>
+<script type="text/babel" src="wireframe-kit.jsx"></script>
+<script type="text/babel" src="screens-l1l2.jsx"></script>
+<script type="text/babel" src="screens-community.jsx"></script>
+<script type="text/babel" src="screens-l3a.jsx"></script>
+<script type="text/babel" src="screens-l3b.jsx"></script>
+<script type="text/babel" src="screens-l456.jsx"></script>
+<script type="text/babel" src="screens-commerce.jsx"></script>
+<script type="text/babel" src="screens-social.jsx"></script>
+<script type="text/babel" src="screens-feat-a.jsx"></script>
+<script type="text/babel" src="screens-feat-b.jsx"></script>
+<script type="text/babel" src="flowmap.jsx"></script>
+
+<script type="text/babel" data-presets="react">
+const PW = 670, PH = 844; // phone frame + annotation column
+
+function App() {
+  return (
+    <DesignCanvas>
+      <DCSection id="ref" title="Reference" subtitle="Frame 0 component sheet · full flow map">
+        <DCArtboard id="L0" label="Frame 0 · Component Sheet" width={1000} height={780}><ComponentSheet /></DCArtboard>
+        <DCArtboard id="flow" label="Flow Map · 27 screens" width={1580} height={1140}><FlowMap /></DCArtboard>
+      </DCSection>
+
+      <DCSection id="l1" title="Layer 1 · Onboarding & Auth" subtitle="Splash → Onboarding → Auth → Profile → Permissions → Home">
+        <DCArtboard id="L1-01" label="L1-01 · Splash" width={670} height={844}><Splash /></DCArtboard>
+        <DCArtboard id="L1-02" label="L1-02 · Onboarding Carousel" width={670} height={844}><Onboarding /></DCArtboard>
+        <DCArtboard id="L1-03" label="L1-03 · Sign Up / Log In" width={670} height={844}><Auth /></DCArtboard>
+        <DCArtboard id="L1-04" label="L1-04 · Skin Profile Setup" width={670} height={844}><SkinProfile /></DCArtboard>
+        <DCArtboard id="L1-05" label="L1-05 · Permissions Primer" width={670} height={844}><Permissions /></DCArtboard>
+      </DCSection>
+
+      <DCSection id="l2" title="Layer 2 · Core Navigation" subtitle="The hub, personalized community, and browse surfaces">
+        <DCArtboard id="L2-06" label="L2-06 · Home / Dashboard" width={670} height={844}><Home /></DCArtboard>
+        <DCArtboard id="L2-26" label="L2-26 · Community Hub (personalized)" width={670} height={844}><Community /></DCArtboard>
+        <DCArtboard id="L2-26b" label="L2-26b · Community Reels (immersive)" width={670} height={844}><CommunityReels /></DCArtboard>
+        <DCArtboard id="L2-26c" label="L2-26c · Tutorial / Post Detail" width={670} height={844}><TutorialDetail /></DCArtboard>
+        <DCArtboard id="L2-07" label="L2-07 · Discover / Explore" width={670} height={844}><Discover /></DCArtboard>
+        <DCArtboard id="L2-08" label="L2-08 · Search & Filter" width={670} height={844}><SearchFilter /></DCArtboard>
+      </DCSection>
+
+      <DCSection id="l3" title="Layer 3 · AI Features" subtitle="8 modules — each shown as capture/entry → processing → result">
+        <DCArtboard id="L3-09a" label="L3-09 · Skin Tone — Capture" width={670} height={844}><SkinToneCapture /></DCArtboard>
+        <DCArtboard id="L3-09b" label="L3-09 · Skin Tone — Processing" width={670} height={844}><SkinToneProcessing /></DCArtboard>
+        <DCArtboard id="L3-09c" label="L3-09 · Skin Tone — Result" width={670} height={844}><SkinToneResult /></DCArtboard>
+        <DCArtboard id="L3-10a" label="L3-10 · Skin Condition — Capture" width={670} height={844}><SkinCondCapture /></DCArtboard>
+        <DCArtboard id="L3-10b" label="L3-10 · Skin Condition — Processing" width={670} height={844}><SkinCondProcessing /></DCArtboard>
+        <DCArtboard id="L3-10c" label="L3-10 · Skin Condition — Result" width={670} height={844}><SkinCondResult /></DCArtboard>
+        <DCArtboard id="L3-11a" label="L3-11 · Ingredient Safety — Entry" width={670} height={844}><IngredientEntry /></DCArtboard>
+        <DCArtboard id="L3-11b" label="L3-11 · Ingredient Safety — Processing" width={670} height={844}><IngredientProcessing /></DCArtboard>
+        <DCArtboard id="L3-11c" label="L3-11 · Ingredient Safety — Result" width={670} height={844}><IngredientResult /></DCArtboard>
+        <DCArtboard id="L3-12a" label="L3-12 · Shade Translator — Pick" width={670} height={844}><ShadeInput /></DCArtboard>
+        <DCArtboard id="L3-12b" label="L3-12 · Shade Translator — Matching" width={670} height={844}><ShadeProcessing /></DCArtboard>
+        <DCArtboard id="L3-12c" label="L3-12 · Shade Translator — Results" width={670} height={844}><ShadeResult /></DCArtboard>
+        <DCArtboard id="L3-13a" label="L3-13 · AR Try-On — Try on" width={670} height={844}><ARCapture /></DCArtboard>
+        <DCArtboard id="L3-13b" label="L3-13 · AR Try-On — Rendering" width={670} height={844}><ARProcessing /></DCArtboard>
+        <DCArtboard id="L3-13c" label="L3-13 · AR Try-On — Captured" width={670} height={844}><ARResult /></DCArtboard>
+        <DCArtboard id="L3-14a" label="L3-14 · Dupe Finder — Target" width={670} height={844}><DupeInput /></DCArtboard>
+        <DCArtboard id="L3-14b" label="L3-14 · Dupe Finder — Finding" width={670} height={844}><DupeProcessing /></DCArtboard>
+        <DCArtboard id="L3-14c" label="L3-14 · Dupe Finder — Dupes" width={670} height={844}><DupeResult /></DCArtboard>
+        <DCArtboard id="L3-15a" label="L3-15 · Tracker — Setup" width={670} height={844}><TrackerSetup /></DCArtboard>
+        <DCArtboard id="L3-15b" label="L3-15 · Tracker — Daily Log" width={670} height={844}><TrackerLog /></DCArtboard>
+        <DCArtboard id="L3-15c" label="L3-15 · Tracker — Progress" width={670} height={844}><TrackerResult /></DCArtboard>
+        <DCArtboard id="L3-27a" label="L3-27 · Color Analysis — Capture" width={670} height={844}><ColorCapture /></DCArtboard>
+        <DCArtboard id="L3-27b" label="L3-27 · Color Analysis — Processing" width={670} height={844}><ColorProcessing /></DCArtboard>
+        <DCArtboard id="L3-27c" label="L3-27 · Color Analysis — Result" width={670} height={844}><ColorResult /></DCArtboard>
+      </DCSection>
+
+      <DCSection id="l4" title="Layer 4 · Product" subtitle="Detail, comparison, saved">
+        <DCArtboard id="L4-16" label="L4-16 · Product Detail" width={670} height={844}><ProductDetail /></DCArtboard>
+        <DCArtboard id="L4-17" label="L4-17 · Product Comparison" width={670} height={844}><ProductCompare /></DCArtboard>
+        <DCArtboard id="L4-19" label="L4-19 · Wishlist / Saved" width={670} height={844}><Wishlist /></DCArtboard>
+      </DCSection>
+
+      <DCSection id="l5" title="Layer 5 · User Profile" subtitle="Identity, routine, history, achievements">
+        <DCArtboard id="L5-20" label="L5-20 · Profile Home" width={670} height={844}><Profile /></DCArtboard>
+        <DCArtboard id="L5-18" label="L5-18 · My Routine (in Profile)" width={670} height={844}><Routine /></DCArtboard>
+        <DCArtboard id="L5-18b" label="L5-18b · Create Routine" width={670} height={844}><CreateRoutine /></DCArtboard>
+        <DCArtboard id="L5-21" label="L5-21 · Skin Journal / History" width={670} height={844}><Journal /></DCArtboard>
+        <DCArtboard id="L5-22" label="L5-22 · Achievements" width={670} height={844}><Achievements /></DCArtboard>
+      </DCSection>
+
+      <DCSection id="l6" title="Layer 6 · Settings & Support" subtitle="Account, plans, help">
+        <DCArtboard id="L6-23" label="L6-23 · Settings" width={670} height={844}><Settings /></DCArtboard>
+        <DCArtboard id="L6-24" label="L6-24 · Subscription / Plans" width={670} height={844}><Subscription /></DCArtboard>
+        <DCArtboard id="L6-25" label="L6-25 · Help & Support" width={670} height={844}><Help /></DCArtboard>
+      </DCSection>
+
+      <DCSection id="l7" title="Layer 7 · Commerce & Checkout" subtitle="Cart → review → shipping → address → map → payment → tracking">
+        <DCArtboard id="L7-28" label="L7-28 · Cart" width={670} height={844}><Cart /></DCArtboard>
+        <DCArtboard id="L7-29" label="L7-29 · Buy / Checkout Review" width={670} height={844}><Buy /></DCArtboard>
+        <DCArtboard id="L7-30" label="L7-30 · Shipping" width={670} height={844}><Shipping /></DCArtboard>
+        <DCArtboard id="L7-31" label="L7-31 · Inserting Address" width={670} height={844}><AddressForm /></DCArtboard>
+        <DCArtboard id="L7-32" label="L7-32 · Maps Page for Address" width={670} height={844}><AddressMap /></DCArtboard>
+        <DCArtboard id="L7-33" label="L7-33 · Payment" width={670} height={844}><Payment /></DCArtboard>
+        <DCArtboard id="L7-34" label="L7-34 · Order Tracking" width={670} height={844}><OrderTracking /></DCArtboard>
+      </DCSection>
+
+      <DCSection id="l8" title="Layer 8 · Social, Brand & Learn" subtitle="Profiles, brand storefront & seller analytics, messages, notifications, learn, favorites">
+        <DCArtboard id="L8-35" label="L8-35 · Public Profile" width={670} height={844}><PublicProfile /></DCArtboard>
+        <DCArtboard id="L8-36" label="L8-36 · Brand Profile" width={670} height={844}><BrandProfile /></DCArtboard>
+        <DCArtboard id="L8-37" label="L8-37 · Brand Sales Analysis" width={670} height={844}><BrandSales /></DCArtboard>
+        <DCArtboard id="L8-38" label="L8-38 · Messages" width={670} height={844}><Messages /></DCArtboard>
+        <DCArtboard id="L8-39" label="L8-39 · Notifications" width={670} height={844}><Notifications /></DCArtboard>
+        <DCArtboard id="L8-40" label="L8-40 · Learn" width={670} height={844}><Learn /></DCArtboard>
+        <DCArtboard id="L8-41" label="L8-41 · Favorites / Wishlist" width={670} height={844}><Favorites /></DCArtboard>
+      </DCSection>
+
+      <DCSection id="l9" title="Layer 9 · Feature Deep-Dives" subtitle="AI, makeup, commerce & social features — new screens + enhancements to existing ones">
+        <DCArtboard id="F-42" label="F-42 · Messaging — Thread" width={670} height={844}><MessageThread /></DCArtboard>
+        <DCArtboard id="F-43" label="F-43 · Brand Shade Translator" width={670} height={844}><BrandShade /></DCArtboard>
+        <DCArtboard id="F-44" label="F-44 · Ingredient Safety × Profile" width={670} height={844}><IngredientSafetyProfile /></DCArtboard>
+        <DCArtboard id="F-45" label="F-45 · Skin Color Card (PNG)" width={670} height={844}><SkinCard /></DCArtboard>
+        <DCArtboard id="F-46" label="F-46 · Tracker Before & After" width={670} height={844}><TrackerBeforeAfter /></DCArtboard>
+        <DCArtboard id="F-47" label="F-47 · Progress Video Reel" width={670} height={844}><ProgressVideo /></DCArtboard>
+        <DCArtboard id="F-48" label="F-48 · Search by Image" width={670} height={844}><ImageSearch /></DCArtboard>
+        <DCArtboard id="F-49" label="F-49 · Makeup Looks (Discovery)" width={670} height={844}><MakeupLooks /></DCArtboard>
+        <DCArtboard id="F-50" label="F-50 · Shop the Look" width={670} height={844}><ShopTheLook /></DCArtboard>
+        <DCArtboard id="F-51" label="F-51 · Specific Product Budget" width={670} height={844}><ProductBudget /></DCArtboard>
+        <DCArtboard id="F-52" label="F-52 · Write Review (Product & Brand)" width={670} height={844}><WriteReview /></DCArtboard>
+        <DCArtboard id="F-53" label="F-53 · Share your MOTD" width={670} height={844}><ShareMOTD /></DCArtboard>
+        <DCArtboard id="F-54" label="F-54 · Social Interaction" width={670} height={844}><SocialInteraction /></DCArtboard>
+        <DCArtboard id="F-55" label="F-55 · Account Roles (User & Brand)" width={670} height={844}><AccountRole /></DCArtboard>
+      </DCSection>
+    </DesignCanvas>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+<script>
+(async () => {
+  if (!document.title || !document.title.trim()) document.title = "Aura Wireframes";
+  // Prepend so page-supplied @page / break rules (deck-stage's margin:0,
+  // author CSS) keep source-order precedence over the baseline.
+  const baseCss = document.createElement('style');
+  baseCss.textContent = "@media print {\n  @page { margin: 0.5cm; }\n  figure, table { break-inside: avoid; }\n  *, *::before, *::after {\n    print-color-adjust: exact; -webkit-print-color-adjust: exact;\n    backdrop-filter: none !important; -webkit-backdrop-filter: none !important;\n    animation-delay: -99s !important; animation-duration: .001s !important;\n    animation-iteration-count: 1 !important; animation-fill-mode: both !important;\n    animation-play-state: running !important; transition-duration: 0s !important;\n  }\n}";
+  document.head.prepend(baseCss);
+  if (document.readyState === 'loading') {
+    await new Promise((r) => document.addEventListener('DOMContentLoaded', r, { once: true }));
+  }
+  let ds = document.querySelector('deck-stage');
+  // whenDefined never resolves when nothing registers the element, so only
+  // await it when a <deck-stage> tag exists (and race a timeout regardless).
+  if (ds && !customElements.get('deck-stage')) {
+    try {
+      await Promise.race([
+        customElements.whenDefined('deck-stage'),
+        new Promise((r) => setTimeout(r, 3000)),
+      ]);
+    } catch (e) {}
+    ds = document.querySelector('deck-stage');
+  }
+  // dc-runtime assigns window.DCLogic at init and mounts into #dc-root on
+  // DOMContentLoaded; settle on that subtree so React has rendered before
+  // print(). Non-DC pages fall through to weighing body.
+  const isDc = !ds && 'DCLogic' in window;
+  const settleRoot = ds || (isDc ? document.getElementById('dc-root') : null) || document.body;
+  if (settleRoot) {
+    // Weigh only content children — skip script/style/template so inline
+    // Babel/CSS doesn't register as stable "content" before the framework
+    // has mounted anything.
+    const MEDIA = 'img,svg,canvas,video,picture,iframe,embed,object';
+    const weigh = () => {
+      let text = 0, media = 0;
+      for (const c of settleRoot.children) {
+        const t = c.tagName;
+        if (t === 'SCRIPT' || t === 'STYLE' || t === 'TEMPLATE') continue;
+        text += (c.textContent || '').trim().length;
+        media += c.querySelectorAll(MEDIA).length + (c.matches(MEDIA) ? 1 : 0);
+      }
+      return text + media * 100;
+    };
+    // "Non-zero and stable" alone is not sufficient to mean rendered: generic
+    // body can carry a static shell while async main content is pending, and
+    // #dc-root can carry the root DC's static text while child refs are still
+    // .sc-placeholder boxes. Gate generic on readyState 'complete', and never
+    // accept stability while a dc-runtime placeholder is present.
+    const isGeneric = settleRoot === document.body;
+    const deadline = Date.now() + 15000;
+    let last = -1, stable = 0;
+    while (Date.now() < deadline) {
+      const n = weigh();
+      const ready =
+        (!isGeneric || document.readyState === 'complete') &&
+        !settleRoot.querySelector('.sc-placeholder');
+      if (n > 0 && n === last && ready) { if (++stable >= 2) break; } else { stable = 0; }
+      last = n;
+      await new Promise((r) => setTimeout(r, 250));
+    }
+  }
+  // Reveal content gated on scroll or visibility before printing. Lazy <img>,
+  // IntersectionObserver fade-ins, and collapsed <details> don't render while
+  // off-screen, so a long page would print with them blank or closed. Open
+  // every <details>, force native-lazy images eager, and scroll the document
+  // through its full height to trip lazy-load + IO; then wait (bounded) for the
+  // newly-triggered images. Inert for deck-stage (slides aren't scroll-gated).
+  try {
+    for (const d of document.querySelectorAll('details')) d.open = true;
+    for (const img of document.querySelectorAll('img[loading="lazy"]'))
+      img.loading = 'eager';
+    const scroller = document.scrollingElement || document.documentElement;
+    const full = Math.max(scroller.scrollHeight, document.body.scrollHeight);
+    const step = window.innerHeight || 800;
+    for (let y = 0; y <= full; y += step) {
+      window.scrollTo(0, y);
+      await new Promise((r) => requestAnimationFrame(r));
+    }
+    window.scrollTo(0, 0);
+    await Promise.race([
+      Promise.all(
+        [...document.images].map((img) =>
+          img.complete
+            ? null
+            : new Promise((res) => {
+                img.addEventListener('load', res, { once: true });
+                img.addEventListener('error', res, { once: true });
+              })
+        )
+      ),
+      new Promise((r) => setTimeout(r, 4000)),
+    ]);
+  } catch (e) {}
+  try { await document.fonts.ready; } catch (e) {}
+  // Jump every animation to its end state so print() never captures a slide
+  // mid-entrance. Ordering matters: the 0s-transition style must be live
+  // BEFORE data-deck-active is set so attribute-keyed transitions don't
+  // start a (now-0s) run from the pre-active base.
+  const st = document.createElement('style');
+  st.textContent = '*,*::before,*::after{animation-delay:-99s !important;animation-duration:.001s !important;animation-iteration-count:1 !important;animation-fill-mode:both !important;animation-play-state:running !important;transition-duration:0s !important}';
+  document.head.appendChild(st);
+  for (const d of document.querySelectorAll('deck-stage')) {
+    for (const c of d.children) {
+      const t = c.tagName;
+      if (t === 'SCRIPT' || t === 'STYLE' || t === 'TEMPLATE') continue;
+      c.setAttribute('data-deck-active', '');
+    }
+  }
+  // Re-append deck-stage's @page last so no author @page can add a margin and
+  // spill each full-bleed slide onto two sheets. Backstop for old copies.
+  if (ds) {
+    let pg = document.getElementById('deck-stage-print-page');
+    if (!pg) {
+      pg = document.createElement('style');
+      pg.textContent = '@page{size:' + (+ds.getAttribute('width') || 1920) +
+        'px ' + (+ds.getAttribute('height') || 1080) + 'px;margin:0}';
+    }
+    document.body.appendChild(pg);
+  }
+  try {
+    const sweep = () => {
+      for (const a of document.getAnimations()) {
+        try { a.finish(); } catch (e) {
+          try { a.currentTime = (a.effect && a.effect.getComputedTiming().duration) || 0; a.pause(); } catch (e2) {}
+        }
+      }
+    };
+    sweep();
+    await new Promise((r) => requestAnimationFrame(r));
+    sweep();
+    await new Promise((r) => requestAnimationFrame(r));
+  } catch (e) {}
+  // Relax break-inside on oversized elements. An element taller than a
+  // printable page can't honor break-inside: avoid — browsers either overflow
+  // it or push it whole to the next page, leaving a blank gap, then break it
+  // anyway at an arbitrary point. After the final layout (content revealed,
+  // animations jumped), find elements taller than a page that still compute
+  // break-inside: avoid and reset them to auto, so the browser breaks them at
+  // their children's boundaries instead (children keep their own avoid). PAGE_PX
+  // is a conservative portrait estimate at 96 CSS px/in — Letter/A4 usable
+  // height minus our 0.5in margins — so only clearly-oversized elements are
+  // touched and under-page elements still stay whole. Skipped for decks, whose
+  // slides are sized to the page.
+  try {
+    if (!document.querySelector('deck-stage')) {
+      const PAGE_PX = 1024;
+      // Our print defaults add a body padding inset only when we also zero the
+      // @page margin; computed style can't tell us (it reports screen media),
+      // so read the injected rule directly.
+      const defaults = document.querySelector('style[data-omelette-print-defaults]');
+      const pageInset = /body\s*\{[^}]*padding/.test(defaults ? defaults.textContent || '' : '');
+      const SEL = 'section,article,figure,table,pre,blockquote,[class~="card" i],[class~="page" i],[class~="sheet" i]';
+      for (const el of document.body.querySelectorAll(SEL)) {
+        if (el instanceof HTMLElement && el.offsetHeight > PAGE_PX) {
+          el.setAttribute('data-om-oversized', '');
+          // Fake-paged docs simulate sheets with over-tall break-after:page
+          // boxes; honoring the break spills half-blank pages and ends a
+          // colored box mid-sheet. Flow them, and (only when we own the page
+          // inset) drop the redundant padding/background via the rule below.
+          const cs = getComputedStyle(el);
+          if (cs.breakAfter === 'page' || cs.pageBreakAfter === 'always') {
+            el.setAttribute('data-om-fakepage', '');
+          }
+        }
+      }
+      const ost = document.createElement('style');
+      ost.textContent = '@media print{' +
+        '[data-om-oversized]{break-inside:auto !important;page-break-inside:auto !important}' +
+        '[data-om-fakepage]{break-after:auto !important;page-break-after:auto !important}' +
+        (pageInset ? '[data-om-fakepage]{padding:0 !important;background:none !important}' : '') +
+        '}';
+      document.head.appendChild(ost);
+    }
+  } catch (e) {}
+  // macOS Preview renders Skia-PDF Luminosity soft-masks as opaque grey boxes;
+  // swap the CSS that triggers them for Preview-safe forms.
+  try {
+    for (const el of document.body.querySelectorAll('*')) {
+      const cs = getComputedStyle(el);
+
+      if (cs.boxShadow !== 'none' && cs.filter === 'none') {
+        const outs = [], kept = [];
+        for (const s of cs.boxShadow.split(/,(?![^(]*[)])/)) {
+          const t = s.trim();
+          const m = t.match(/^(rgba?[(][^)]+[)]) (-?[0-9.]+px) (-?[0-9.]+px) ([0-9.]+px) -?[0-9.]+px$/);
+          if (m && parseFloat(m[4]) > 0) outs.push('drop-shadow(' + m[2] + ' ' + m[3] + ' ' + m[4] + ' ' + m[1] + ')');
+          else kept.push(t);
+        }
+        if (outs.length) {
+          el.style.setProperty('filter', outs.join(' '), 'important');
+          el.style.setProperty('box-shadow', kept.join(', ') || 'none', 'important');
+        }
+      }
+
+      const mask = cs.maskImage && cs.maskImage !== 'none' ? cs.maskImage : cs.webkitMaskImage;
+      if (mask && mask !== 'none' && cs.filter === 'none') el.style.setProperty('filter', 'opacity(1)', 'important');
+    }
+  } catch (e) {}
+  setTimeout(() => { try { window.print(); } catch (e) {} }, 200);
+})();
+</script>
+</body>
+</html>
